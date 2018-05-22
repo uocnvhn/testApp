@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!--<script src="xuly.js"></script>-->
+    <script>
+        $(document).ready(function(){
+            var socket = io.connect("http://localhost:3000/");
+
+            socket.emit("new user", "khoapham.vn");
+
+            socket.emit("new user", $username.val(), function(data){
+                if(data){
+
+                }else{
+
+                }
+            });
+
+            socket.on("server-gui-ve", function(data){
+                //io.sockets.emit("new message",{msg:data});
+                alert(data);
+            })
+            socket.on("serverguitinnhan",function (data) {
+                alert('gasd');
+                console.log(data);
+            })
+            socket.on("disconnect", function(data){
+                if(!socket.username) return;
+                else
+                    usernames.splice(usernames.indexOf(socket.username), 1);
+            });
+
+        });
+    </script>
+</head>
+<body>
+Hello Nsssssode
+</body>
+</html>
